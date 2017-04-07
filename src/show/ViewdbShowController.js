@@ -1,7 +1,7 @@
 'use strict';
 
 var ViewdbShowController = function($controller, $routeParams,
-  $scope, $q, Viewdb, npdcAppConfig) {
+  $scope, $q, Viewdb, npdcAppConfig, ViewdbSearchService) {
     'ngInject';
 
 
@@ -11,42 +11,24 @@ var ViewdbShowController = function($controller, $routeParams,
   $scope.resource = Viewdb;
 
 
-  //Show map in Antarctica
-  $scope.mapOptions = {};
-  $scope.mapOptions.color = "#FF0000";
-
-
   let show = function() {
+       console.log("hei");
 
-    $scope.show().$promise.then((viewdb) => {
+      //  var link = 'https://apptest.data.npolar.no:3000/service/_ids.json';
+      var link = "https://api.npolar.no/expedition/?q=&facets=topics,code";
 
-      //Overlay the map with lat,lng
-      $scope.mapOptions.coverage = [[[viewdb.latitude,geologySample.longitude],[geologySample.latitude,geologySample.longitude]]];
-      $scope.mapOptions.geojson = "geojson";
 
-      $scope.document.lithology =  convert($scope.document.lithology);
-
-    });
+     ViewdbSearchService.getValues(link).then(
+       function(results) {
+        return(results.data);
+  });
 
   };
 
-  show();
+var pp = show();
+console.log(pp);
 
 };
 
-/* convert from camelCase to lower case text*/
-function convert(str) {
-       var  positions = '';
-
-       for(var i=0; i<(str).length; i++){
-           if(str[i].match(/[A-Z]/) !== null){
-             positions += " ";
-             positions += str[i].toLowerCase();
-        } else {
-            positions += str[i];
-        }
-      }
-        return positions;
-}
 
 module.exports = ViewdbShowController;

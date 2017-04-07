@@ -1,7 +1,7 @@
 'use strict';
 
 
-var ViewdbSearchController = function ($scope, $location, $controller, $filter, NpolarApiSecurity, Viewdb, npdcAppConfig,  NpdcSearchService, NpolarTranslate) {
+var ViewdbSearchController = function ($scope, $location, $controller, $filter, NpolarApiSecurity, Viewdb, npdcAppConfig, ViewdbSearchService, NpdcSearchService, NpolarTranslate) {
   'ngInject';
 
   $controller('NpolarBaseController', { $scope: $scope });
@@ -13,6 +13,18 @@ var ViewdbSearchController = function ($scope, $location, $controller, $filter, 
  };
 
   npdcAppConfig.search.local.results.subtitle = "type";
+
+   var link = 'https://apptest.data.npolar.no:3000/service/_ids.json';
+   console.log("testing link");
+     ViewdbSearchService.getValues(link).then(
+       function(results) {
+        // on success
+
+        console.log(results.data.ids);
+       //  $scope.keysS = (results.data.ids).map(function(el) {
+       //           return el.replace('-api','');
+       //     });
+  });
 
   //replace with get
   let query = function() {

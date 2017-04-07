@@ -12,6 +12,14 @@ var router = function($routeProvider, $locationProvider) {
     templateUrl: 'show/viewdb.html',
     controller: 'ViewdbShowController',
     reloadOnSearch: false
+  }).when('/expedition', {
+    templateUrl: 'show/viewdb.html',
+    controller: 'ViewdbShowController',
+    reloadOnSearch: false
+  }).when('/viewdb', {
+    templateUrl: 'show/viewdb.html',
+    controller: 'ViewdbShowController',
+    reloadOnSearch: false
   }).when('/', {
     templateUrl: 'search/search.html',
     controller: 'ViewdbSearchController',

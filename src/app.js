@@ -5,21 +5,21 @@ var AutoConfig = npdcCommon.AutoConfig;
 var angular = require('angular');
 require('npdc-common/src/wrappers/leaflet');
 
-var npdcViewdbApp = angular.module('npdcViewdbApp', ['npdcCommon','leaflet']);
+var npdcViewdbApp = angular.module('npdcViewdbApp', ['npdcCommon', 'ngResource','leaflet']);
 
 npdcViewdbApp.controller('ViewdbShowController', require('./show/ViewdbShowController'));
 npdcViewdbApp.controller('ViewdbSearchController', require('./search/ViewdbSearchController'));
-npdcViewdbApp.directive('viewdbCoverage', require('./edit/coverage/coverageDirective'));
+npdcViewdbApp.factory('ViewdbSearchService', require('./search/ViewdbSearchService'));
 
 // Bootstrap ngResource models using NpolarApiResource
 var resources = [
   {'path': '/', 'resource': 'NpolarApi'},
   {'path': '/user', 'resource': 'User'},
-  {'path': '/viewdb', 'resource': 'ViewdbResource'}
+  {'path': '/viewdb', 'resource': 'Viewdb' }
 ];
 
 resources.forEach(service => {
-  // Expressive DI syntax is needed here
+  // Create a new resource
   npdcViewdbApp.factory(service.resource, ['NpolarApiResource', function (NpolarApiResource) {
   return NpolarApiResource.resource(service);
   }]);
@@ -28,9 +28,11 @@ resources.forEach(service => {
 // Routing
 npdcViewdbApp.config(require('./router'));
 
+console.log("yyyyyy");
+
 npdcViewdbApp.config(($httpProvider, npolarApiConfig) => {
   var autoconfig = new AutoConfig("production");
-  angular.extend(npolarApiConfig, autoconfig, { resources });
+  angular.extend(npolarApiConfig, autoconfig, { resources  });
   console.debug("npolarApiConfig", npolarApiConfig);
 
   $httpProvider.interceptors.push('npolarApiInterceptor');
