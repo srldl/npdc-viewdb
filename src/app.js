@@ -28,8 +28,6 @@ resources.forEach(service => {
 // Routing
 npdcViewdbApp.config(require('./router'));
 
-console.log("yyyyyy");
-
 npdcViewdbApp.config(($httpProvider, npolarApiConfig) => {
   var autoconfig = new AutoConfig("production");
   angular.extend(npolarApiConfig, autoconfig, { resources  });

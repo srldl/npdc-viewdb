@@ -10,8 +10,6 @@ var ViewdbSearchService = function($resource, $http){
 	//return $resource( 'https://apptest.data.npolar.no:3000/service/_ids.json', {}, {
 
   var getValues = function(Inputlink) {
-    console.log('making http request');
-    console.log(Inputlink);
     return $http.get(Inputlink);
   };
 
