@@ -5,18 +5,14 @@ var router = function($routeProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true).hashPrefix('!');
 
-  $routeProvider.when('/geology/sample', {
-    templateUrl: 'show/viewdb.html',
-    controller: 'ViewdbShowController'
-  }).when('/course', {
-    templateUrl: 'show/viewdb.html',
-    controller: 'ViewdbShowController',
-    reloadOnSearch: false
-  }).when('/expedition', {
+  var $route = $routeProvider.$get[$routeProvider.$get.length-1]({$on:function(){}});
+
+
+  $routeProvider.when('/viewdb', {
     templateUrl: 'show/viewdb.html',
     controller: 'ViewdbShowController',
     reloadOnSearch: false
-  }).when('/viewdb', {
+  }).when('/db', {
     templateUrl: 'show/viewdb.html',
     controller: 'ViewdbShowController',
     reloadOnSearch: false
@@ -25,6 +21,13 @@ var router = function($routeProvider, $locationProvider) {
     controller: 'ViewdbSearchController',
     reloadOnSearch: false
   });
+
+ $route.routes['/db'].regexp = /^\/(([A-Za-z0-9_-]+))$/;
+  $route.routes['/db/'].regexp = /^\/(([A-Za-z0-9_-]+))\/$/;
+
 };
+
+
+
 
 module.exports = router;

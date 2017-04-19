@@ -107,4 +107,7 @@ https://browser-update.org/update.min.js
 NETWORK:
 *
 
-# hash: ffff7679b68faf1a18ab38ae60f50a47bdb7a042e1697d723bc6c19e05a74149
+SETTINGS:
+prefer-online
+
+# hash: 37d9d8650ea5452a4ad5abcc1156bc99bf93807ad2ba7a00d8250f54b24e838a
