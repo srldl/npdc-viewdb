@@ -10,27 +10,27 @@ var ViewdbShowController = function($controller, $routeParams,
   });
   $scope.resource = Viewdb;
 
-   let db = $location.path();
-   var link =  'https://api.npolar.no' + db.replace("-api","") + '/?q=';
-   console.log(link);
+  let db = $location.path();
+  var link =  'https://api.npolar.no' + db.replace("-api","") + '/?q=';
+  console.log(link);
 
 
   ViewdbSearchService.getValues(link).then(
        function(results) {
           // on success
-          $scope.query =  results.data;
-          console.log($scope.query);
+          $scope.query = results.data;
   });
 
-  let show = function() {
+ // let show = function() {
     //  var link = 'https://apptest.data.npolar.no:3000/service/_ids.json';
     // var link = "http://dbmaster.data.npolar.no:5984/_utils/document.html?api_service/" + db - get next link from this doc
-    ViewdbSearchService.getValues(link).then(
-       function(results) {
-        console.log(results.data);
-        return(results.data);
-    });
-  };
+ //   ViewdbSearchService.getValues(link).then(
+ //      function(results) {
+ //       console.log(results.data);
+ //       return(results.data);
+ //   });
+ //
+ // };
 
 //var pp = show();
 //console.log(pp);

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<npdc:edit-button class="np-primary-control"></npdc:edit-button>
+<!--<npdc:loader ng-if="!document"></npdc:loader>  -->
+
+<p>view</p>
+<div class="np-padding">
+  <div ng-if="query" class="np-doc">
+
+  <p> {{ query.feed.opensearch.totalResults }} results </p>
+
+{{ query.feed.entries[0].title }} / {{query.feed.entries[0].id }}
+    </div>
+</div>
+

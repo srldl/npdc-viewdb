@@ -2,71 +2,13 @@
 <npdc:edit-button class="np-primary-control"></npdc:edit-button>
 <!--<npdc:loader ng-if="!document"></npdc:loader>  -->
 
-<p>hei hei</p>
- {{ query }}
+<p>viewdb</p>
 <div class="np-padding">
-  <div ng-if="document" class="np-doc">
+  <div ng-if="query" class="np-doc">
 
-  <!--  {{ document }} -->
-<!--<section>
-   <md-list>
-    <p ng-if="document.original_sample_name">{{ 'Original sample marking' | t }}: {{document.original_sample_name}}</p>
-    <p ng-if="document.sample_description">{{ 'Sample description' | t }}: {{document.sample_description}}</p>
-    <p ng-if="document.cabinet_no">{{ 'Box/cabinet no' | t }}: {{document.cabinet_no}}</p>
-    <p ng-if="document.thin_section">{{ 'Thin section no' | t }}: {{document.thin_section}}</p>
-    <p ng-if="document.fossil == 'yes' ">{{ 'Fossil' | t }}: {{ 'yes' | t }}</p>
-    <p ng-if="document.analysis">{{ 'Analysis' | t }}: <span ng-repeat="item in document.analysis" class="nowrap">{{ item }} &nbsp;&nbsp;</span> </p>
-  </md-list>
-</section>
+  <p> {{ query.feed.opensearch.totalResults }} results </p>
 
-<section>
- <h3>{{ 'Setting' | t }}</h3>
- <md-divider></md-divider>
-  <md-list>
-  <p ng-if="document['@placename'] || document['latitude']" >
-     <md-icon>place</md-icon>{{document['@placename']}} &nbsp; [{{document.latitude}}(N), {{document.longitude}}({{'E' | t}})]</p>
-    <p ng-if="document.position_accuracy == 'GPS'">{{ 'Position type' | t }}: {{document.position_accuracy}}</p>
-    <p ng-if="document.position_accuracy == 'good estimate' ">{{ 'Position type' | t }}: {{ 'good estimate' | t }}</p>
-    <p ng-if="document.position_accuracy == 'poorly known (set to placename)' ">{{ 'Position type' | t }}: {{ 'poorly known (set to placename)' | t }}</p>
-     <p ng-if="document.collected_year">{{ 'Year' | t }}: {{document.collected_year}}</p>
-      <p ng-if="document.expedition">{{ 'Expedition' | t }}: {{document.expedition}}</p>
-     <p ng-if="document.sample_comment"> {{ 'Sample comment' | t }}: {{document.sample_comment}}</p>
-</md-list>
-</section>
-
-
-<section ng-if="document.geologist">
-  <h3>{{ 'Geologist' | t }}</h3>
- <md-divider></md-divider>
-  <md-list>
-      <p> <md-icon class="md-avatar-icon">person</md-icon>{{ document.geologist }} </p>
-    </md-list>
-</section>
-
-
- <section>
-  <div ng-if="document.links.length > 0">
-    <h3>{{ 'Links' | t }}</h3>
-    <md-divider></md-divider>
-    <md-list>
-      <md-list-item class="md-2-line" ng-repeat="link in document.links">
-        <div class="md-list-item-text">
-          <a ng-href="{{link.href}}">{{ link.title || link.href }}</a>
-          <p>{{ link.rel }}</p>
-        </div>
-      </md-list-item>
-    </md-list>
-  </div>
-  </section>
-
--->
-
-
-<!-- created updated -->
-      <section>
-        <npdc:document-meta></npdc:document-meta>
-      </section>
-
+{{ query.feed.entries[0].title }} / {{query.feed.entries[0].id }}
     </div>
 </div>
 

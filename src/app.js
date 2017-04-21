@@ -8,6 +8,8 @@ require('npdc-common/src/wrappers/leaflet');
 var npdcViewdbApp = angular.module('npdcViewdbApp', ['npdcCommon', 'ngResource','leaflet']);
 
 npdcViewdbApp.controller('ViewdbShowController', require('./show/ViewdbShowController'));
+npdcViewdbApp.controller('ViewController', require('./show/ViewController'));
+npdcViewdbApp.controller('StatController', require('./show/StatController'));
 npdcViewdbApp.controller('ViewdbSearchController', require('./search/ViewdbSearchController'));
 npdcViewdbApp.factory('ViewdbSearchService', require('./search/ViewdbSearchService'));
 

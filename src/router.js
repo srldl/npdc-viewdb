@@ -12,19 +12,25 @@ var router = function($routeProvider, $locationProvider) {
     templateUrl: 'show/viewdb.html',
     controller: 'ViewdbShowController',
     reloadOnSearch: false
-  }).when('/db', {
-    templateUrl: 'show/viewdb.html',
-    controller: 'ViewdbShowController',
-    reloadOnSearch: false
   }).when('/', {
     templateUrl: 'search/search.html',
     controller: 'ViewdbSearchController',
     reloadOnSearch: false
+  }).when('/db/stat', {
+    templateUrl: 'show/stat.html',
+    controller: 'StatController',
+    reloadOnSearch: false
+  }).when('/db', {
+    templateUrl: 'show/viewdb.html',
+    controller: 'ViewdbShowController',
+    reloadOnSearch: false
   });
 
- $route.routes['/db'].regexp = /^\/(([A-Za-z0-9_-]+))$/;
+  //Make route accept different database names
+  $route.routes['/db'].regexp = /^\/(([A-Za-z0-9_-]+))$/;
   $route.routes['/db/'].regexp = /^\/(([A-Za-z0-9_-]+))\/$/;
-
+  $route.routes['/db/stat'].regexp = /^\/(([A-Za-z0-9_-]+))\/([stat]+)$/ ;
+  $route.routes['/db/stat/'].regexp = /^\/(([A-Za-z0-9_-]+))\/([stat]+)\/$/ ;
 };
 
 
